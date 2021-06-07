@@ -1,0 +1,464 @@
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script defer src="theme.js"></script>
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap"
+    rel="stylesheet"
+  />
+</head>
+
+<body>
+  <div class="navBar">
+    <app-navbar></app-navbar>
+  </div>
+  <div class="responsables">
+    <div class="gauche">
+      <div class="DepartementRespo">
+        <div class="itemDemande">
+          <a style="align-self: center; font-weight: bold"> Responsables </a>
+        </div>
+        <mat-grid-list cols="3">
+          <mat-grid-tile>
+            <div
+              *ngIf="ResponsablesElectro.photoURL !== ''; else AddOneElectro"
+              class="chefDepartement"
+            >
+              <h1 class="titreDepartement">Electronique</h1>
+              <h1 class="NomEtPrenom">
+                {{ ResponsablesElectro.nom | uppercase }}
+                {{ ResponsablesElectro.prenom }}
+              </h1>
+
+              <img
+                class="profilePicture"
+                [src]="ResponsablesElectro.photoURL"
+              />
+              <label for="upload-photoE"
+                ><a
+                  ><mat-icon class="white-icon right">
+                    insert_photo</mat-icon
+                  ></a
+                ></label
+              >
+              <input
+                id="upload-photoE"
+                type="file"
+                class="fileButton"
+                [(ngModel)]="electroFile"
+                (change)="selectFileElectro($event)"
+              />
+              <!-- <button [disabled]="!selectedFiles" (click)="uploadElectro()">
+                <mat-icon class="pic-change">add_photo_alternate</mat-icon>
+              </button> -->
+
+              <a class="modifyLink" (click)="addElectroRespoClicked()"
+                ><mat-icon class="white-icon">edit</mat-icon></a
+              >
+              <a class="modifyLink"
+                ><mat-icon class="white-icon">settings</mat-icon></a
+              >
+            </div>
+            <ng-template #AddOneElectro>
+              <div class="chefDepartement">
+                <h1 class="titreDepartement">Electronique</h1>
+                <a class="CreerButton" (click)="addElectroRespoClicked()"
+                  >Créer</a
+                >
+              </div>
+            </ng-template>
+            <div class="formDiv" *ngIf="AddElectroRespoClicked">
+              <form [formGroup]="formAddElectroRespo">
+                <div class="wrap-inputUseradd">
+                  <mat-form-field appearance="fill">
+                    <mat-label>Nom</mat-label>
+                    <mat-select
+                      class="input"
+                      [(ngModel)]="nomElectro"
+                      formControlName="nom"
+                      matNativeControl
+                      required
+                    >
+                      <mat-option
+                        *ngFor="let ElectroUser of ElectroUsers"
+                        value="{{ ElectroUser.nom + ' ' + ElectroUser.prenom }}"
+                        >{{ ElectroUser.nom | uppercase }}
+                        {{ ElectroUser.prenom }}</mat-option
+                      >
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+
+                <div class="wrap-inputUseradd">
+                  <input
+                    class="input"
+                    type="text"
+                    [(ngModel)]="emailElectro"
+                    formControlName="email"
+                    placeholder="Username"
+                  />
+                </div>
+                <div class="wrap-inputUseradd">
+                  <input
+                    class="input"
+                    type="text"
+                    [(ngModel)]="passwordElectro"
+                    formControlName="password"
+                    placeholder="Mot de passe"
+                  />
+                </div>
+
+                <div class="container-form-btn">
+                  <button
+                    class="AjouterButton"
+                    (click)="
+                      ajouterRespoElectro(
+                        nomElectro,
+
+                        emailElectro,
+                        passwordElectro
+                      )
+                    "
+                  >
+                    Ajouter
+                  </button>
+                  <button
+                    class="AnnulerButton"
+                    (click)="annuleraddElectroRespoClicked()"
+                  >
+                    Annuler
+                  </button>
+                </div>
+              </form>
+            </div>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <div
+              *ngIf="ResponsablesInfo.photoURL !== ''; else AddOneInfo"
+              class="chefDepartement"
+            >
+              <h1 class="titreDepartement">Informatique</h1>
+              <h1 class="NomEtPrenom">
+                {{ ResponsablesInfo.nom | uppercase }}
+                {{ ResponsablesInfo.prenom }}
+              </h1>
+              <img class="profilePicture" [src]="ResponsablesInfo.photoURL" />
+              <label for="upload-photoI"
+                ><a
+                  ><mat-icon class="white-icon right">
+                    insert_photo</mat-icon
+                  ></a
+                ></label
+              >
+              <input
+                id="upload-photoI"
+                type="file"
+                class="fileButton"
+                [(ngModel)]="infoFile"
+                (change)="selectFileInfo($event)"
+              />
+              <!-- <button [disabled]="!selectedFiles" (click)="uploadInfo()">
+                <mat-icon class="pic-change">add_photo_alternate</mat-icon>
+              </button> -->
+              <a class="modifyLink" (click)="addInfoRespoClicked()"
+                ><mat-icon class="white-icon">edit</mat-icon></a
+              >
+              <a class="modifyLink"
+                ><mat-icon class="white-icon">settings</mat-icon></a
+              >
+            </div>
+            <ng-template #AddOneInfo>
+              <div class="chefDepartement">
+                <h1 class="titreDepartement">Informatique</h1>
+                <a class="CreerButton" (click)="addInfoRespoClicked()">Créer</a>
+              </div>
+            </ng-template>
+            <div class="formDiv" *ngIf="AddInfoRespoClicked">
+              <form [formGroup]="formAddInfoRespo">
+                <div class="wrap-inputUseradd">
+                  <mat-form-field appearance="fill">
+                    <mat-label>Nom</mat-label>
+                    <mat-select
+                      class="input"
+                      [(ngModel)]="nomInfo"
+                      formControlName="nom"
+                      matNativeControl
+                      required
+                    >
+                      <mat-option
+                        *ngFor="let InfoUser of InfoUsers"
+                        value="{{ InfoUser.nom + ' ' + InfoUser.prenom }}"
+                        >{{ InfoUser.nom | uppercase }}
+                        {{ InfoUser.prenom }}</mat-option
+                      >
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="wrap-inputUseradd">
+                  <input
+                    class="input"
+                    type="text"
+                    [(ngModel)]="emailInfo"
+                    formControlName="email"
+                    placeholder="Username"
+                  />
+                </div>
+                <div class="wrap-inputUseradd">
+                  <input
+                    class="input"
+                    type="text"
+                    [(ngModel)]="passwordInfo"
+                    formControlName="password"
+                    placeholder="Mot de passe"
+                  />
+                </div>
+
+                <div class="container-form-btn">
+                  <button
+                    class="AjouterButton"
+                    (click)="
+                      ajouterRespoInfo(
+                        nomInfo,
+
+                        emailInfo,
+                        passwordInfo
+                      )
+                    "
+                  >
+                    Ajouter
+                  </button>
+                  <button
+                    class="AnnulerButton"
+                    (click)="annuleraddInfoRespoClicked()"
+                  >
+                    Annuler
+                  </button>
+                </div>
+              </form>
+            </div>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <div
+              *ngIf="ResponsablesMeca.photoURL !== ''; else AddOne"
+              class="chefDepartement"
+            >
+              <h1 class="titreDepartement">Mécanique</h1>
+              <h1 class="NomEtPrenom">
+                {{ ResponsablesMeca.nom | uppercase }}
+                {{ ResponsablesMeca.prenom }}
+              </h1>
+              <img class="profilePicture" [src]="ResponsablesMeca.photoURL" />
+              <label for="upload-photoM"
+                ><a
+                  ><mat-icon class="white-icon right">
+                    insert_photo</mat-icon
+                  ></a
+                ></label
+              >
+              <input
+                id="upload-photoM"
+                type="file"
+                class="fileButton"
+                [(ngModel)]="mecaFile"
+                (change)="selectFileMeca($event)"
+              />
+
+              <a class="modifyLink" (click)="addMecaRespoClicked()"
+                ><mat-icon class="white-icon">edit</mat-icon></a
+              >
+              <a class="modifyLink"
+                ><mat-icon class="white-icon">settings</mat-icon></a
+              >
+            </div>
+
+            <ng-template #AddOne>
+              <div
+                *ngIf="ResponsablesMeca != null; else AddOne"
+                class="chefDepartement"
+              >
+                <h1 class="titreDepartement">Mécanique</h1>
+                <a class="CreerButton" (click)="addMecaRespoClicked()">Créer</a>
+              </div>
+            </ng-template>
+
+            <div class="formDiv" *ngIf="AddMecaRespoClicked">
+              <form [formGroup]="formAddMecaRespo">
+                <div class="wrap-inputUseradd">
+                  <mat-form-field appearance="fill">
+                    <mat-label>Nom</mat-label>
+                    <mat-select
+                      class="input"
+                      [(ngModel)]="nomMeca"
+                      formControlName="nom"
+                      matNativeControl
+                      required
+                    >
+                      <mat-option
+                        *ngFor="let MecanicUser of MecanicUsers"
+                        value="{{ MecanicUser.nom + ' ' + MecanicUser.prenom }}"
+                        >{{ MecanicUser.nom | uppercase }}
+                        {{ MecanicUser.prenom }}</mat-option
+                      >
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="wrap-inputUseradd">
+                  <input
+                    class="input"
+                    type="text"
+                    [(ngModel)]="emailMeca"
+                    formControlName="email"
+                    placeholder="Username"
+                  />
+                </div>
+                <div class="wrap-inputUseradd">
+                  <input
+                    class="input"
+                    type="text"
+                    [(ngModel)]="passwordMeca"
+                    formControlName="password"
+                    placeholder="Mot de passe"
+                  />
+                </div>
+
+                <div class="container-form-btn">
+                  <button
+                    class="AjouterButton"
+                    (click)="
+                      ajouterRespoMeca(
+                        nomMeca,
+
+                        emailMeca,
+                        passwordMeca
+                      )
+                    "
+                  >
+                    Ajouter
+                  </button>
+                  <button
+                    class="AnnulerButton"
+                    (click)="annuleraddMecaRespoClicked()"
+                  >
+                    Annuler
+                  </button>
+                </div>
+              </form>
+            </div>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </div>
+      <div class="personnesConges">
+        <div *ngIf="!DemandesConge.length; else titre">
+          <div class="itemDemande">
+            <a>Aucune demande de congé pour le moment</a>
+          </div>
+        </div>
+        <ng-template #titre>
+          <div class="itemDemande">
+            <a style="align-self: center; font-weight: bold"
+              >Demandes de congé</a
+            >
+          </div>
+        </ng-template>
+
+        <div class="itemDemande" *ngFor="let demande of DemandesConge">
+          <div style="width: 33%">
+            <a>{{ demande.nom | uppercase }} {{ demande.prenom }} </a>
+          </div>
+          <div style="width: 33%">
+            <a>du {{ demande.debut | date }} </a>
+            <a>à {{ demande.fin | date }}</a>
+          </div>
+          <div class="buttonsContainer" style="width: 33%">
+            <div>
+              <button class="submit" (click)="accepter(demande.carteId)">
+                Accepter
+              </button>
+            </div>
+            <div>
+              <button class="annulerButton" (click)="refuser(demande.carteId)">
+                Refuser
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="Users">
+      <div class="listUsers" *ngIf="listUsersDom; else form">
+        <div class="tb">
+          <div class="td">
+            <input
+              type="text"
+              class="salarieSearch"
+              id="search-text"
+              aria-describedby="search-text"
+              [(ngModel)]="searchText"
+              placeholder="Chercher un salarié"
+              autofocus
+            />
+          </div>
+          <div class="td" id="s-cover">
+            <button class="button" type="submit">
+              <div id="s-circle"></div>
+              <span></span>
+            </button>
+          </div>
+        </div>
+
+        <div class="salarie" *ngFor="let User of Users | appFilter: searchText">
+          <div>
+            <div style="margin-top: 20px">
+              <a class="username"
+                >{{ User.prenom }} {{ User.nom | uppercase }}</a
+              >
+            </div>
+
+            <div style="margin-bottom: 8px">
+              <a class="poste">
+                {{ User.poste }}
+              </a>
+            </div>
+            <mat-button-toggle-group #group="matButtonToggleGroup">
+              <mat-button-toggle
+                [ngClass]="{
+                  green: User.authorised,
+                  red: !User.authorised
+                }"
+                (click)="modifierAuthorised(User.carteId, User.authorised)"
+                [value]="User.authorised"
+              >
+                <div *ngIf="User.authorised; else unauthorised">
+                  <mat-icon style="color: #24af2b">check</mat-icon>
+                </div>
+                <ng-template #unauthorised>
+                  <mat-icon style="color: #efcb68">close</mat-icon>
+                </ng-template>
+              </mat-button-toggle>
+            </mat-button-toggle-group>
+          </div>
+          <div class="buttonsUser">
+            <a (click)="profileUser(User.carteId)"
+              ><mat-icon style="color: #efcb68">edit</mat-icon></a
+            >
+
+            <a clear (click)="supprimerUser(User.carteId)">
+              <mat-icon style="color: #d74e09">delete_sweep</mat-icon>
+            </a>
+          </div>
+        </div>
+        <div class="addButton">
+          <button (click)="formAfficher()">Ajouter</button>
+        </div>
+      </div>
+      <ng-template #form>
+        <div class="listUsers">
+          <app-adduser
+            [listUsersDom]="listUsersDom"
+            (listUsersDomChanged)="listUsersDomChangedHandler($event)"
+          ></app-adduser>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</body>

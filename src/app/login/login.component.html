@@ -1,0 +1,47 @@
+<body>
+  <div class="loginContainer">
+    <div class="logoContainer">
+      <img class="logo" src="../../assets/logo.png" />
+    </div>
+    <div class="formContainer">
+      <form [formGroup]="formLogin">
+        <div class="input-group">
+          <label for="text-1542372332072">Username</label>
+          <input
+            type="text"
+            type="text"
+            class="input"
+            formControlName="email"
+            placeholder="Email"
+            [(ngModel)]="email"
+          />
+        </div>
+        <div class="input-group">
+          <label for="text-1542372332072">Password</label>
+          <input
+            type="password"
+            type="password"
+            class="input"
+            formControlName="password"
+            placeholder="Mot de passe"
+            [(ngModel)]="password"
+          />
+        </div>
+        <div class="buttonContainer">
+          <button class="submit" (click)="login()">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Login
+          </button>
+        </div>
+        <div class="buttonContainer">
+          <p class="link">
+            <a class="resetPassword">Réinitialiser MDP</a>
+          </p>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>

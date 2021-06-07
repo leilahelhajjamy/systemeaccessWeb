@@ -1,0 +1,44 @@
+$darkPurple: #160c28;
+$white: #fff;
+$flame: rgb(215, 78, 9);
+$orangeCrayolla: #efcb68;
+$bdazzledBlue: #40587a;
+ul {
+  list-style-type: none;
+  margin: 5px -20px;
+  margin-top: 5rem;
+}
+
+.logo-text {
+  color: $darkPurple;
+  font-size: 15px;
+  font-weight: 100;
+}
+.nav-link {
+  background-color: $darkPurple;
+  height: 80px;
+  width: 80px;
+  border-radius: 40px;
+  margin-bottom: 5rem;
+  border-style: dotted;
+  border-color: $bdazzledBlue;
+  border-width: 0.2rem;
+}
+.nav-link4 {
+  background-color: $bdazzledBlue;
+}
+.nav-link3 {
+  background-color: $white;
+}
+.nav-link2 {
+  background-color: $flame;
+}
+.nav-link1 {
+  background-color: $darkPurple;
+}
+
+.nav-link:hover {
+  border-color: $orangeCrayolla;
+  border-width: 3px;
+  transition: 0.5s ease-in-out;
+}

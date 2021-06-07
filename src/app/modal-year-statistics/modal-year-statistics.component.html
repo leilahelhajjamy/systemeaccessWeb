@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="responsables">
+    <div class="orange">
+      <button class="close" (click)="back()">
+        <mat-icon class="closeIcon">cancel</mat-icon>
+      </button>
+      <p class="StatistiquesTitres">Statistiques de l'année {{ annee }}</p>
+      <div class="barYear">
+        <figure id="bAR"></figure>
+        <p class="StatistiquesTitres">
+          Nombre d'heures totales peandant cette année
+          <button class="CreerButton">{{ NbreHeureAnnee }}</button>
+        </p>
+        <p class="StatistiquesTitres">
+          Moyenne d'heure par moi
+          <button class="CreerButton">{{ MoyenneMois }}</button>
+        </p>
+        <p class="StatistiquesTitres">
+          Moyenne d'heure par semaine
+          <button class="CreerButton">
+            {{ MoyenneSemaine }}
+          </button>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

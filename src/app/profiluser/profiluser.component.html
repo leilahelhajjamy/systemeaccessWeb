@@ -1,0 +1,329 @@
+<div class="container">
+  <div class="navBar">
+    <app-navbar></app-navbar>
+  </div>
+  <div class="responsables">
+    <div style="margin-bottom: 12px; margin-top: 12px">
+      <h1 class="profileName">{{ User.prenom }} {{ User.nom | uppercase }}</h1>
+    </div>
+    <div class="addButton">
+      <button (click)="StatisticsPage(User.carteId, User.nom, User.prenom)">
+        Statistics
+      </button>
+    </div>
+    <div class="mat-tabCustom">
+      <mat-tab-group>
+        <mat-tab label="Coordonnées">
+          <div class="coordonnees">
+            <div style="display: flex; flex-direction: columns">
+              <h4 class="userName">
+                <strong>{{ User.nom | uppercase }} </strong>
+              </h4>
+            </div>
+
+            <div class="item-note" item-end>
+              <p style="text-align: right">
+                <button class="buttonIcon" clear (click)="EditNomClicked()">
+                  Modifier nom
+                </button>
+              </p>
+
+              <form [formGroup]="formNomModify" *ngIf="editNomClicked === true">
+                <div class="wrap-inputUseradd">
+                  <input
+                    class="input"
+                    type="text"
+                    formControlName="nom"
+                    [(ngModel)]="nom"
+                    placeholder="Nom"
+                  />
+                </div>
+                <div class="container-form-btn">
+                  <button class="buttonEnregistrer" (click)="modifierNom()">
+                    Enregister
+                  </button>
+                  <button
+                    class="buttonAnnuler"
+                    (click)="AnnulerEditNomClicked()"
+                  >
+                    Annuler
+                  </button>
+                </div>
+              </form>
+            </div>
+            <div style="display: flex; flex-direction: columns">
+              <h4 class="userName">
+                <strong>{{ User.prenom }} </strong>
+              </h4>
+            </div>
+
+            <div class="item-note" item-end>
+              <p style="text-align: right">
+                <button class="buttonIcon" clear (click)="EditPrenomClicked()">
+                  Modifier prénom
+                </button>
+              </p>
+
+              <form
+                [formGroup]="formPrenomModify"
+                *ngIf="editPrenomClicked === true"
+              >
+                <div class="wrap-inputUseradd">
+                  <input
+                    class="input"
+                    type="text"
+                    formControlName="prenom"
+                    [(ngModel)]="prenom"
+                    placeholder="Prénom"
+                  />
+                </div>
+                <div class="container-form-btn">
+                  <button class="buttonEnregistrer" (click)="modifierPrenom()">
+                    Enregister
+                  </button>
+                  <button
+                    class="buttonAnnuler"
+                    (click)="AnnulerEditPrenomClicked()"
+                  >
+                    Annuler
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            <div style="display: flex; flex-direction: columns">
+              <h4 class="userName">
+                <strong>{{ User.departement }} </strong>
+              </h4>
+            </div>
+
+            <div style="display: flex; flex-direction: columns">
+              <h4 class="userName">
+                <strong>{{ User.poste }} </strong>
+              </h4>
+            </div>
+
+            <div class="item-note" item-end>
+              <p style="text-align: right">
+                <button class="buttonIcon" clear (click)="EditPosteClicked()">
+                  Modifier poste
+                </button>
+              </p>
+
+              <form
+                [formGroup]="formPosteModify"
+                *ngIf="editPosteClicked === true"
+              >
+                <div class="wrap-inputUseradd">
+                  <input
+                    class="input"
+                    type="text"
+                    formControlName="poste"
+                    [(ngModel)]="poste"
+                    placeholder="Poste"
+                  />
+                </div>
+                <div class="container-form-btn">
+                  <button class="buttonEnregistrer" (click)="modifierPoste()">
+                    Enregister
+                  </button>
+                  <button
+                    class="buttonAnnuler"
+                    (click)="AnnulerEditPosteClicked()"
+                  >
+                    Annuler
+                  </button>
+                </div>
+              </form>
+            </div>
+            <div style="display: flex; flex-direction: columns">
+              <h4 class="userName">
+                <strong>{{ User.carteId }} </strong>
+              </h4>
+            </div>
+
+            <div class="item-note" item-end>
+              <p style="text-align: right">
+                <button class="buttonIcon" clear (click)="EditCarteIdClicked()">
+                  Modifier carte
+                </button>
+              </p>
+
+              <form
+                [formGroup]="formCarteIdModify"
+                *ngIf="editCarteIdClicked === true"
+              >
+                <div class="wrap-inputUseradd">
+                  <input
+                    class="input"
+                    type="text"
+                    formControlName="carteID"
+                    [(ngModel)]="carteID"
+                    placeholder="Carte ID"
+                  />
+                </div>
+                <div class="container-form-btn">
+                  <button
+                    class="buttonEnregistrer"
+                    type="submit"
+                    (click)="modifierCarteId()"
+                  >
+                    Enregister
+                  </button>
+                  <button
+                    class="buttonAnnuler"
+                    (click)="AnnulerEditCarteIdClicked()"
+                  >
+                    Annuler
+                  </button>
+                </div>
+              </form>
+            </div>
+            <DIV style="display: flex; flex-direction: columns">
+              <h4 *ngIf="User.authorised === true" class="userName">
+                <button class="buttonEnregistrer"><strong>Yes </strong></button>
+              </h4>
+              <h4 *ngIf="User.authorised === false" class="userName">
+                <button class="buttonEnregistrer"><strong>No </strong></button>
+              </h4>
+            </DIV>
+
+            <div class="item-note" item-end>
+              <p style="text-align: right">
+                <button class="buttonIcon" (click)="EditAuthorisedClicked()">
+                  Modifier
+                </button>
+              </p>
+
+              <form
+                [formGroup]="formAuthorisedModify"
+                *ngIf="editAuthorisedClicked === true"
+              >
+                <div class="container-form-btn">
+                  <button
+                    class="buttonEnregistrer"
+                    type="submit"
+                    (click)="modifierAuthorised()"
+                  >
+                    Enregister
+                  </button>
+                  <button
+                    class="buttonAnnuler"
+                    (click)="AnnulerEditAuthorisedClicked()"
+                  >
+                    Annuler
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div></mat-tab
+        >
+        <mat-tab label="Activités">
+          <div class="coordonnees" *ngIf="activitiees">
+            <div *ngIf="activities.length == 0 && activitiees.length == 0">
+              <h4 class="ion-text-center custom-font">
+                Aucune activité à afficher
+              </h4>
+
+              <div *ngIf="activitiees.length == 0 && activities.length !== 0">
+                <h4 class="ion-text-center custom-font">
+                  Aucune activité à afficher
+                </h4>
+              </div>
+            </div>
+
+            <div class="searchSelect">
+              <form [formGroup]="formMonth">
+                <mat-form-field appearance="fill">
+                  <mat-label>Choisir un mois</mat-label>
+                  <mat-select
+                    [(ngModel)]="monthChoisi"
+                    (selectionChange)="onChange($event)"
+                  >
+                    <mat-option
+                      *ngFor="let month of months"
+                      value="{{ month }}"
+                    >
+                      {{ month }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </form>
+              <div class="tb">
+                <div class="td">
+                  <input
+                    type="text"
+                    class="input"
+                    id="search-text"
+                    aria-describedby="search-text"
+                    [(ngModel)]="searchText"
+                    placeholder="Chercher un jour"
+                    autofocus
+                  />
+                </div>
+              </div>
+            </div>
+            <!-- <mat-label>Choose a date</mat-label>
+            <input
+              matInput
+              [matDatepicker]="pickerJour"
+              [min]="minJour()"
+              [max]="maxJour()"
+              [(ngModel)]="day"
+            />
+            <mat-datepicker-toggle matSuffix [for]="pickerJour">
+              <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker
+              #pickerJour
+              (selectedChanged)="filterList(day)"
+            ></mat-datepicker>
+            <p>Enter a date range</p>
+            <mat-label>Enter a date range</mat-label>
+            <mat-date-range-input
+              [rangePicker]="picker"
+              [min]="minJour()"
+              [max]="maxJour()"
+            >
+              <input
+                matStartDate
+                placeholder="Start date"
+                [(ngModel)]="dateDebut"
+              />
+              <input matEndDate placeholder="End date" [(ngModel)]="dateFin" />
+            </mat-date-range-input>
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker> -->
+
+            <ul
+              *ngFor="let activity of activitiees | dayFilter: searchText"
+              class="gradient-list"
+            >
+              <li class="in">
+                <p class="timestamp">{{ activity.timestamp }}</p>
+              </li>
+              <button
+                [ngClass]="{
+                  buttonIn: activity.type == 'IN',
+                  buttonOut: activity.type == 'OUT'
+                }"
+              >
+                {{ activity.type }}
+              </button>
+            </ul>
+
+            <p>
+              <a class="link"></a>
+            </p>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+    <div class="backButton">
+      <button (click)="back()">Back</button>
+    </div>
+  </div>
+</div>

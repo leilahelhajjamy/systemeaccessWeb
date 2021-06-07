@@ -1,0 +1,64 @@
+<form [formGroup]="formUserAdd" class="formAddUser">
+  <div class="input-group">
+    <input
+      class="input"
+      type="text"
+      formControlName="nom"
+      [(ngModel)]="nom"
+      placeholder="Nom"
+    />
+  </div>
+
+  <div class="input-group">
+    <input
+      class="input"
+      type="text"
+      formControlName="prenom"
+      [(ngModel)]="prenom"
+      placeholder="Prénom"
+    />
+  </div>
+
+  <div class="input-group">
+    <input
+      class="input"
+      type="text"
+      formControlName="carteId"
+      [(ngModel)]="carteId"
+      placeholder="ID Carte"
+    />
+  </div>
+
+  <div class="input-group">
+    <input
+      class="input"
+      type="text"
+      formControlName="poste"
+      [(ngModel)]="poste"
+      placeholder="Poste"
+    />
+  </div>
+  <div class="input-group">
+    <mat-form-field appearance="fill">
+      <mat-label>Département</mat-label>
+      <mat-select
+        class="input"
+        formControlName="departement"
+        [(ngModel)]="departement"
+        [(value)]="departement"
+        matNativeControl
+        required
+        matNativeControl
+        required
+      >
+        <mat-option value="Electronique">Electronique</mat-option>
+        <mat-option value="Mécanique">Mécanique</mat-option>
+        <mat-option value="Informatique">Informatique</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="buttonsContainer">
+    <button class="submit" (click)="ajouter()">Ajouter</button>
+    <button class="annulerButton" (click)="annulerAjout()">Annuler</button>
+  </div>
+</form>

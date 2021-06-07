@@ -1,0 +1,444 @@
+$darkPurple: #160c28;
+$white: #fff;
+$flame: #d74e09;
+$orangeCrayolla: #efcb68;
+$bdazzledBlue: #40587a;
+
+body {
+  display: flex;
+  background-color: $orangeCrayolla;
+}
+.navBar {
+  width: 8%;
+  background-color: $orangeCrayolla;
+}
+
+.responsables {
+  background-color: $darkPurple;
+  width: 92%;
+  border-top-left-radius: 1rem;
+  flex-direction: row;
+  display: flex;
+  border-bottom-left-radius: 1rem;
+}
+.chefDepartement {
+  height: 70%;
+  padding: 10%;
+  display: flex;
+  border-radius: 10%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonSupprimerUser {
+  color: white;
+  background-color: #40587a;
+  padding: 10px;
+  border-radius: 60px;
+  border-style: none;
+  margin-left: 5%;
+  z-index: 2;
+}
+.addUserButton {
+  color: white;
+  background-color: #40587a;
+  padding: 10px;
+  height: 60px;
+  width: 60px;
+  border-radius: 60px;
+  border-style: none;
+  margin-left: 5%;
+  transition: background-color 1s;
+  transition: height 0.4s;
+  transition: width 0.4s;
+  z-index: 2;
+}
+.addUserButton:hover {
+  background-color: #efcb68;
+  height: 120px;
+  width: 120px;
+}
+
+.formDiv:hover {
+  opacity: 1;
+}
+
+label {
+  cursor: pointer;
+  /* Style as you please, it will become the visible UI component. */
+}
+
+#upload-photo {
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+}
+.formDiv {
+  background-color: white;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  display: flex;
+  border-radius: 1rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.5;
+  transition: opacity 1s;
+  position: absolute;
+  align-self: center;
+}
+
+.submit {
+  color: white;
+  background: $bdazzledBlue;
+  border-top-left-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+  border-top-right-radius: 2rem;
+  border-style: none;
+  height: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-weight: bold;
+  z-index: 1;
+  transition: top 0.1s ease-in-out;
+}
+.submit:hover {
+  box-shadow: 0 14px 44px 0 rgba(215, 78, 9, 0.9);
+}
+
+.CreerButton {
+  color: white;
+  background: $flame;
+  border-top-right-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+  border-top-left-radius: 2rem;
+  border-style: none;
+  border-color: $flame;
+  height: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-weight: bold;
+  transition: top 0.1s ease-in-out;
+}
+.CreerButton:hover {
+  box-shadow: 0 14px 44px 0 #efcb68e6;
+}
+.annulerButton {
+  color: white;
+  background: $flame;
+  border-top-right-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+  border-top-left-radius: 2rem;
+  border-style: none;
+  border-color: $flame;
+  height: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-weight: bold;
+  z-index: 1;
+  transition: top 0.1s ease-in-out;
+}
+.annulerButton:hover {
+  box-shadow: 0 14px 44px 0 #40587ae6;
+}
+.buttonsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.container-form-btn {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: row;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+.AnnulerButton {
+  color: white;
+  background-color: #40587a;
+  padding: 10px;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-style: none;
+  margin-left: 5%;
+}
+
+.AjouterButton {
+  color: white;
+  background-color: #efcb68;
+  padding: 10px;
+  border-top-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border-top-right-radius: 15px;
+  border-style: none;
+}
+form input {
+  margin-bottom: 8px;
+  padding: 12px 8px;
+  width: 85%;
+  outline: none;
+  border: 4px solid #efcb68;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+.form {
+  padding: 20px;
+}
+
+.titreDepartement {
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+.NomEtPrenom {
+  color: $orangeCrayolla;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: -15px;
+}
+
+a {
+  align-self: flex-end;
+}
+.white-icon {
+  color: white;
+  align-self: flex-end;
+}
+
+.right {
+  position: absolute;
+  align-self: flex-end;
+}
+.pic-change {
+  color: white;
+  margin-top: 10%;
+}
+
+.itemDemande {
+  background-color: white;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  // margin-inline: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 1rem;
+}
+
+.gauche {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 70%;
+}
+.personnesConges {
+  height: 40%;
+  width: 100%;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  margin-left: 2rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  overflow-y: scroll;
+}
+.DepartementRespo {
+  height: 50%;
+  width: 100%;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  margin-left: 2rem;
+  padding-top: 1rem;
+}
+
+.fileButton {
+  color: #efcb68;
+  background: #efcb68 !important;
+}
+
+mat-button-toggle {
+  height: 25px;
+  width: 25px;
+  border-radius: 17px !important;
+}
+
+.green {
+  display: flex;
+  background-color: $orangeCrayolla;
+  justify-content: center;
+}
+
+.red {
+  display: flex;
+  background-color: $flame;
+  justify-content: center;
+}
+.buttonsUser {
+  flex-direction: column;
+  display: flex;
+  margin-right: 1.5rem;
+}
+.Users {
+  // background-color: $bdazzledBlue;
+  height: 90%;
+  width: 30%;
+  border-top-right-radius: 1rem;
+  margin-right: 2rem;
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+.profilePicture {
+  height: 8rem;
+  width: 8rem;
+  border-radius: 50%;
+  border-color: $orangeCrayolla;
+  border-style: solid;
+}
+.AddUsers {
+  background-color: $orangeCrayolla;
+  height: 8%;
+  width: 8%;
+  border-radius: 5%;
+}
+
+.listUsers {
+  overflow-y: scroll;
+  height: 100%;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $bdazzledBlue;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: $orangeCrayolla;
+}
+.profileImage {
+  height: 6rem;
+  width: 6rem;
+  border-radius: 50%;
+}
+
+.salarie {
+  background-color: $white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 12px;
+  height: fit-content;
+  width: 90%;
+  margin-top: 5%;
+  margin-left: 5%;
+  margin-right: 5%;
+  padding-left: 1rem;
+  padding-bottom: 1rem;
+}
+
+.username {
+  color: #160c28;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+a {
+  cursor: pointer;
+}
+
+.addButton {
+  position: absolute;
+  height: 6rem;
+  width: 6rem;
+  background: $orangeCrayolla;
+  border-top-left-radius: 6rem;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.addButton:hover {
+  height: 8rem;
+  width: 8rem;
+  background: $flame;
+  transition: 0.3s ease-in-out;
+}
+
+.addButton button {
+  height: 4rem;
+  width: 4rem;
+  background: $orangeCrayolla;
+  border-top-left-radius: 6rem;
+  border-style: none;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+}
+
+.addButton:hover button {
+  height: 4rem;
+  width: 4rem;
+  background: $flame;
+  border-top-left-radius: 6rem;
+  border-style: none;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+}
+
+.tb {
+  display: table;
+  width: 100%;
+}
+
+.td {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.salarieSearch,
+.button {
+  color: #fff;
+  font-family: Nunito;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background-color: transparent;
+  width: 80%;
+  margin-left: 20%;
+  height: 20px;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.salarieSearch::placeholder {
+  color: $orangeCrayolla;
+}

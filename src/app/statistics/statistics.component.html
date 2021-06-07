@@ -1,0 +1,76 @@
+<div class="container">
+  <div class="responsables">
+    <p class="StatistiquesProfil">{{ nom | uppercase }} {{ prenom }}</p>
+    <div class="annee">
+      <p class="StatistiquesTitres">Année courante</p>
+
+      <div class="box">
+        <select
+          matNativeControl
+          required
+          #mySelect
+          (change)="onOptionsSelected(mySelect.value)"
+        >
+          <option disabled selected value>Année</option>
+          <option value="{{ anneeActuelle }}">{{ anneeActuelle }}</option>
+          <option value="{{ anneeActuelle - 1 }}">
+            {{ anneeActuelle - 1 }}
+          </option>
+          <option value="{{ anneeActuelle - 2 }}">
+            {{ anneeActuelle - 2 }}
+          </option>
+          <option value="{{ anneeActuelle - 3 }}">
+            {{ anneeActuelle - 3 }}
+          </option>
+        </select>
+      </div>
+      <div class="barYear">
+        <figure id="bar"></figure>
+        <p class="StatistiquesTitres">
+          Nombre d'heures totales pendant cette année
+          <button class="CreerButton">{{ NumberOfHoursYear }}</button>
+        </p>
+        <p class="StatistiquesTitres">
+          Moyenne d'heure par moi
+          <button class="CreerButton">{{ MoyenneMois }}</button>
+        </p>
+        <p class="StatistiquesTitres">
+          Moyenne d'heure par semaine
+          <button class="CreerButton">{{ MoyenneSemaine }}</button>
+        </p>
+      </div>
+    </div>
+
+    <div class="month">
+      <p class="StatistiquesTitres">Moi courant</p>
+      <div class="box">
+        <select
+          matNativeControl
+          required
+          #myMonthSelect
+          (change)="onOptionsMonthSelected(myMonthSelect.value)"
+        >
+          <option disabled selected value>Moi</option>
+          <option *ngFor="let month of monthss" [value]="month">
+            {{ month }}
+          </option>
+        </select>
+      </div>
+
+      <div class="barMonth">
+        <figure id="barMonth"></figure>
+        <p class="StatistiquesTitres">
+          Nombre d'heures totales pendant ce moi
+          <button class="CreerButton">{{ NumberOfHoursMonth }}</button>
+        </p>
+        <p class="StatistiquesTitres">
+          Nombre de jours moins de huit heures de travail
+          <button class="CreerButton">{{ MoinsHuitMois }}</button>
+        </p>
+      </div>
+    </div>
+    <div class="backButton">
+      <button (click)="back()">Back</button>
+    </div>
+  </div>
+</div>

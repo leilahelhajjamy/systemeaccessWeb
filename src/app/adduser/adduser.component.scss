@@ -1,0 +1,72 @@
+$darkPurple: #160c28;
+$white: #fff;
+$flame: rgb(215, 78, 9);
+$orangeCrayolla: #efcb68;
+$bdazzledBlue: #40587a;
+input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+
+mat-form-field {
+  background: white;
+  width: 60%;
+  align-self: center;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+
+.submit {
+  color: white;
+  background: $bdazzledBlue;
+  border-top-left-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+  border-top-right-radius: 2rem;
+  border-style: none;
+  height: 3rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  font-weight: bold;
+  z-index: 1;
+  transition: top 0.1s ease-in-out;
+}
+.submit:hover {
+  box-shadow: 0 14px 44px 0 rgba(215, 78, 9, 0.9);
+}
+
+.annulerButton {
+  color: white;
+  background: $flame;
+  border-top-right-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+  border-top-left-radius: 2rem;
+  border-style: none;
+  border-color: $flame;
+  height: 3rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  font-weight: bold;
+  z-index: 1;
+  transition: top 0.1s ease-in-out;
+}
+.annulerButton:hover {
+  box-shadow: 0 14px 44px 0 #40587ae6;
+}
+
+.buttonsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.formAddUser {
+  margin-top: 12px;
+}

@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="responsables">
+    <div class="orange">
+      <button class="close" (click)="back()">
+        <mat-icon class="closeIcon">cancel</mat-icon>
+      </button>
+      <p class="StatistiquesTitres">Statistiques du moi {{ moi }}</p>
+      <div class="barYear">
+        <figure id="barForMonth"></figure>
+        <p class="StatistiquesTitres">
+          Nombre d'heures totales
+          <button class="CreerButton">{{ nbreHeuresMoi }}</button>
+        </p>
+        <p class="StatistiquesTitres">
+          Nombre d'heures moins de huit heures de travail
+          <button class="CreerButton">{{ nbreJoursMoinsHuit }}</button>
+        </p>
+        <p class="StatistiquesTitres"></p>
+        <p class="StatistiquesTitres"></p>
+      </div>
+    </div>
+  </div>
+</div>
