@@ -54,10 +54,20 @@
               <a class="modifyLink" (click)="addElectroRespoClicked()"
                 ><mat-icon class="white-icon">edit</mat-icon></a
               >
-              <a class="modifyLink"
-                ><mat-icon class="white-icon">settings</mat-icon></a
+              <a
+                *ngIf="ResponsablesElectro.etat == 'inactif'"
+                class="modifyLink"
+                (click)="activerRespoElectro()"
+                ><mat-icon class="red-icon">work_off</mat-icon></a
+              >
+              <a
+                *ngIf="ResponsablesElectro.etat == 'actif'"
+                class="modifyLink"
+                (click)="DesactiverRespoElectro()"
+                ><mat-icon class="jaune-icon">work</mat-icon></a
               >
             </div>
+
             <ng-template #AddOneElectro>
               <div class="chefDepartement">
                 <h1 class="titreDepartement">Electronique</h1>
@@ -113,7 +123,6 @@
                     (click)="
                       ajouterRespoElectro(
                         nomElectro,
-
                         emailElectro,
                         passwordElectro
                       )
@@ -162,8 +171,17 @@
               <a class="modifyLink" (click)="addInfoRespoClicked()"
                 ><mat-icon class="white-icon">edit</mat-icon></a
               >
-              <a class="modifyLink"
-                ><mat-icon class="white-icon">settings</mat-icon></a
+              <a
+                *ngIf="ResponsablesInfo.etat == 'inactif'"
+                class="modifyLink"
+                (click)="activerRespoInfo()"
+                ><mat-icon class="red-icon">work_off</mat-icon></a
+              >
+              <a
+                *ngIf="ResponsablesInfo.etat == 'actif'"
+                class="modifyLink"
+                (click)="DesactiverRespoInfo()"
+                ><mat-icon class="jaune-icon">work</mat-icon></a
               >
             </div>
             <ng-template #AddOneInfo>
@@ -265,8 +283,17 @@
               <a class="modifyLink" (click)="addMecaRespoClicked()"
                 ><mat-icon class="white-icon">edit</mat-icon></a
               >
-              <a class="modifyLink"
-                ><mat-icon class="white-icon">settings</mat-icon></a
+              <a
+                *ngIf="ResponsablesMeca.etat == 'inactif'"
+                class="modifyLink"
+                (click)="activerRespoMeca()"
+                ><mat-icon class="red-icon">work_off</mat-icon></a
+              >
+              <a
+                *ngIf="ResponsablesMeca.etat == 'actif'"
+                class="modifyLink"
+                (click)="DesactiverRespoMeca()"
+                ><mat-icon class="jaune-icon">work</mat-icon></a
               >
             </div>
 

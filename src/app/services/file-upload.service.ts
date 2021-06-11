@@ -104,6 +104,7 @@ export class FileUploadService {
   }
   addRespo(user: Responsable) {
     var user: Responsable = {
+      etat: user.etat,
       nom: user.nom,
       email: user.email,
       password: user.password,

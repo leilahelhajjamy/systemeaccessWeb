@@ -115,10 +115,6 @@ export class UsersComponent implements OnInit {
     console.log('demandes', this.DemandesConge);
   }
 
-  openSnackBar() {
-    this._snackBar.open('some thing goes here ', 'dance');
-  }
-
   onChange(event: any) {
     this.filterList(event);
   }
@@ -180,16 +176,42 @@ export class UsersComponent implements OnInit {
   }
 
   ajouterRespoMeca(nom, email, password) {
-    this.userService.addRespo(nom, email, password, 'Mécanique');
+    this.userService.addRespo(nom, email, password, 'actif', 'Mécanique');
     this.AddMecaRespoClicked = false;
   }
   ajouterRespoInfo(nom, email, password) {
-    this.userService.addRespo(nom, email, password, 'Informatique');
+    this.userService.addRespo(nom, email, password, 'actif', 'Informatique');
     this.AddInfoRespoClicked = false;
   }
   ajouterRespoElectro(nom, email, password) {
-    this.userService.addRespo(nom, email, password, 'Electronique');
+    this.userService.addRespo(nom, email, password, 'actif', 'Electronique');
     this.AddElectroRespoClicked = false;
+  }
+
+  DesactiverRespoMeca() {
+    this.userService.DesactiverRespoMeca();
+    this.toast('Responsable inactif');
+  }
+  activerRespoMeca() {
+    this.userService.activerRespoMeca();
+    this.toast('Responsable actif');
+  }
+
+  DesactiverRespoInfo() {
+    this.userService.DesactiverRespoInfo();
+    this.toast('Responsable inactif');
+  }
+  activerRespoInfo() {
+    this.userService.activerRespoInfo();
+    this.toast('Responsable actif');
+  }
+  DesactiverRespoElectro() {
+    this.userService.DesactiverRespoElectro();
+    this.toast('Responsable inactif');
+  }
+  activerRespoElectro() {
+    this.userService.activerRespoElectro();
+    this.toast('Responsable actif');
   }
   addInfoRespoClicked() {
     this.AddInfoRespoClicked = true;
@@ -305,5 +327,14 @@ export class UsersComponent implements OnInit {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.router.onSameUrlNavigation = 'reload';
     this.router.navigate([currentUrl]);
+  }
+
+  async toast(message) {
+    this._snackBar.open(message, 'Cancel', {
+      duration: 2000,
+      // here specify the position
+      verticalPosition: 'top',
+      horizontalPosition: 'center',
+    });
   }
 }

@@ -28,13 +28,14 @@ export class User {
 export class Responsable {
   constructor() {
     this.nom = '';
+    this.etat = '';
     this.departement = '';
     this.email = '';
     this.password = '';
     this.photoURL = '';
   }
   nom: string;
-
+  etat: string;
   email: string;
   password: string;
   photoURL: string;
@@ -114,10 +115,10 @@ export class UserService {
     this.db.list(`/users/${carteId}`).remove();
   }
 
-  addRespo(nom, email, password, departement) {
+  addRespo(nom, email, password, etat, departement) {
     var user = {
       nom: nom,
-
+      etat: etat,
       email: email,
       password: password,
       departement: departement,
@@ -130,7 +131,7 @@ export class UserService {
   getResponsiblesElectro() {
     let responsable: Responsable = {
       nom: '',
-
+      etat: '',
       email: '',
       password: '',
       departement: '',
@@ -143,7 +144,7 @@ export class UserService {
       .on('value', (snapshots) => {
         snapshots.forEach((snap) => {
           responsable.nom = snap.val().nom;
-
+          responsable.etat = snap.val().etat;
           responsable.email = snap.val().email;
           responsable.password = snap.val().password;
           responsable.departement = snap.val().departement;
@@ -153,10 +154,44 @@ export class UserService {
     return responsable;
   }
 
+  DesactiverRespoElectro() {
+    let responsable: Responsable = this.getResponsiblesElectro();
+    responsable.etat = 'inactif';
+    this.db.object('/responsables/Electronique').set(responsable);
+  }
+  DesactiverRespoMeca() {
+    let responsable: Responsable = this.getResponsiblesMeca();
+    responsable.etat = 'inactif';
+    this.db.object('responsables/Mécanique').set(responsable);
+  }
+
+  DesactiverRespoInfo() {
+    let responsable: Responsable = this.getResponsiblesInfo();
+    responsable.etat = 'inactif';
+    this.db.object('responsables/Informatique').set(responsable);
+  }
+
+  activerRespoElectro() {
+    let responsable: Responsable = this.getResponsiblesElectro();
+    responsable.etat = 'actif';
+    this.db.object('/responsables/Electronique').set(responsable);
+  }
+  activerRespoMeca() {
+    let responsable: Responsable = this.getResponsiblesMeca();
+    responsable.etat = 'actif';
+    this.db.object('responsables/Mécanique').set(responsable);
+  }
+
+  activerRespoInfo() {
+    let responsable: Responsable = this.getResponsiblesInfo();
+    responsable.etat = 'actif';
+    this.db.object('responsables/Informatique').set(responsable);
+  }
+
   getResponsiblesMeca() {
     let responsable: Responsable = {
       nom: '',
-
+      etat: '',
       email: '',
       password: '',
       departement: '',
@@ -169,7 +204,7 @@ export class UserService {
       .on('value', (snapshots) => {
         snapshots.forEach((snap) => {
           responsable.nom = snap.val().nom;
-
+          responsable.etat = snap.val().etat;
           responsable.email = snap.val().email;
           responsable.password = snap.val().password;
           responsable.departement = snap.val().departement;
@@ -182,7 +217,7 @@ export class UserService {
   getResponsiblesInfo() {
     let responsable: Responsable = {
       nom: '',
-
+      etat: '',
       email: '',
       password: '',
       departement: '',
@@ -195,7 +230,7 @@ export class UserService {
       .on('value', (snapshots) => {
         snapshots.forEach((snap) => {
           responsable.nom = snap.val().nom;
-
+          responsable.etat = snap.val().etat;
           responsable.email = snap.val().email;
           responsable.password = snap.val().password;
           responsable.departement = snap.val().departement;
