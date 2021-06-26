@@ -451,3 +451,56 @@ a {
 .salarieSearch::placeholder {
   color: $orangeCrayolla;
 }
+
+.gauche {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+  width: 70%;
+}
+
+.buttonsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.submit {
+  color: white;
+  background: $bdazzledBlue;
+  border-top-left-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+  border-top-right-radius: 2rem;
+  border-style: none;
+  height: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-weight: bold;
+  z-index: 1;
+  transition: top 0.1s ease-in-out;
+}
+.submit:hover {
+  box-shadow: 0 14px 44px 0 rgba(215, 78, 9, 0.9);
+}
+.itemDemande {
+  background-color: white;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  // margin-inline: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 1rem;
+}
+.wrapper {
+  background-color: yellowgreen;
+  z-index: 300;
+}
+
+.is-info {
+  z-index: 400;
+}

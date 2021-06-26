@@ -28,6 +28,7 @@ export class AuthService {
     return this.fireAuth.signOut().then(() => {
       localStorage.removeItem('loggedIn');
       console.log('loggedOut');
+      this.router.navigate(['']);
     });
   }
 

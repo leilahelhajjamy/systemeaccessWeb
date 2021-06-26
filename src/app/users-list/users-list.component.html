@@ -1,0 +1,105 @@
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script defer src="theme.js"></script>
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap"
+    rel="stylesheet"
+  />
+</head>
+
+<body>
+  <div class="navBar">
+    <app-navbar></app-navbar>
+  </div>
+  <div class="responsables">
+    <div class="gauche">
+      <div class="salarie">
+        <div style="margin-top: 20px" *ngFor="let card of cards">
+          <a class="username"> {{ card }} est nouvellement détectée</a>
+        </div>
+        <div class="buttonsContainer" style="width: 33%">
+          <div>
+            <button class="submit" (click)="ajouterCarte()">Ajouter</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="Users">
+      <div class="listUsers" *ngIf="listUsersDom; else form">
+        <div class="tb">
+          <div class="td">
+            <input
+              type="text"
+              class="salarieSearch"
+              id="search-text"
+              aria-describedby="search-text"
+              [(ngModel)]="searchText"
+              placeholder="Chercher un salarié"
+              autofocus
+            />
+          </div>
+          <div class="td" id="s-cover">
+            <button class="button" type="submit">
+              <div id="s-circle"></div>
+              <span></span>
+            </button>
+          </div>
+        </div>
+
+        <div class="salarie" *ngFor="let User of Users | appFilter: searchText">
+          <div>
+            <div style="margin-top: 20px">
+              <a class="username"
+                >{{ User.prenom }} {{ User.nom | uppercase }}</a
+              >
+            </div>
+
+            <div style="margin-bottom: 8px">
+              <a class="poste">
+                {{ User.poste }}
+              </a>
+            </div>
+            <mat-button-toggle-group #group="matButtonToggleGroup">
+              <mat-button-toggle
+                [ngClass]="{
+                  green: User.authorised,
+                  red: !User.authorised
+                }"
+                (click)="modifierAuthorised(User.carteId, User.authorised)"
+                [value]="User.authorised"
+              >
+                <div *ngIf="User.authorised; else unauthorised">
+                  <mat-icon style="color: #24af2b">check</mat-icon>
+                </div>
+                <ng-template #unauthorised>
+                  <mat-icon style="color: #efcb68">close</mat-icon>
+                </ng-template>
+              </mat-button-toggle>
+            </mat-button-toggle-group>
+          </div>
+          <div class="buttonsUser">
+            <a (click)="profileUser(User.carteId)"
+              ><mat-icon style="color: #efcb68">edit</mat-icon></a
+            >
+
+            <a clear (click)="supprimerUser(User.carteId)">
+              <mat-icon style="color: #d74e09">delete_sweep</mat-icon>
+            </a>
+          </div>
+        </div>
+        <div class="addButton">
+          <button (click)="formAfficher()">Ajouter</button>
+        </div>
+      </div>
+      <ng-template #form>
+        <div class="listUsers">
+          <app-adduser
+            [listUsersDom]="listUsersDom"
+            (listUsersDomChanged)="listUsersDomChangedHandler($event)"
+          ></app-adduser>
+        </div>
+      </ng-template>
+    </div>
+    <app-toast></app-toast>
+  </div>
+</body>

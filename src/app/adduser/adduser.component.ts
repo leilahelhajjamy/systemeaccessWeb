@@ -110,10 +110,10 @@ export class AdduserComponent implements OnInit {
           this.toast(this.messageCarteId);
         } else {
           if (
-            /^([A-Z]+)$/.test(carteIdSplit[0]) == false ||
-            /^([0-9]+)$/.test(carteIdSplit[1]) == false ||
-            /^([0-9]+)$/.test(carteIdSplit[2]) == false ||
-            /^([0-9][A-Z]+)$/.test(carteIdSplit[3]) == false
+            /^([a-zA-Z0-9]+)$/.test(carteIdSplit[0]) == false ||
+            /^([a-zA-Z0-9]+)$/.test(carteIdSplit[1]) == false ||
+            /^([a-zA-Z0-9]+)$/.test(carteIdSplit[2]) == false ||
+            /^([a-zA-Z0-9]+)$/.test(carteIdSplit[3]) == false
           ) {
             this.toast(this.messageCarteId);
           } else {

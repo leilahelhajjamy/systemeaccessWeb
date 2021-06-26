@@ -57,6 +57,7 @@ export class UserService {
   usersListRef: AngularFireList<any>;
   usersResponsablesRef: AngularFireList<any>;
   usersObjectRef: AngularFireObject<any>;
+  cardsListRef: AngularFireList<unknown>;
   constructor(public db: AngularFireDatabase) {
     this.usersListRef = this.db.list('/users');
     this.usersObjectRef = this.db.object('/users/');
@@ -65,6 +66,11 @@ export class UserService {
   getUsersList() {
     this.usersListRef = this.db.list('/users');
     return this.usersListRef;
+  }
+
+  getCardsList() {
+    this.cardsListRef = this.db.list('/NewCard');
+    return this.cardsListRef;
   }
 
   save(

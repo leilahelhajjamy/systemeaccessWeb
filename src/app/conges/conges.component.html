@@ -1,0 +1,50 @@
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script defer src="theme.js"></script>
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap"
+    rel="stylesheet"
+  />
+</head>
+
+<body>
+  <div class="navBar">
+    <app-navbar></app-navbar>
+  </div>
+  <div class="responsables">
+    <div class="personnesConges">
+      <div *ngIf="!DemandesConge.length; else titre">
+        <div class="itemDemande">
+          <a>Aucune demande de congé pour le moment</a>
+        </div>
+      </div>
+      <ng-template #titre>
+        <div class="itemDemande">
+          <a style="align-self: center; font-weight: bold">Demandes de congé</a>
+        </div>
+      </ng-template>
+
+      <div class="itemDemande" *ngFor="let demande of DemandesConge">
+        <div style="width: 33%">
+          <a>{{ demande.nom | uppercase }} {{ demande.prenom }} </a>
+        </div>
+        <div style="width: 33%">
+          <a>du {{ demande.debut | date }} </a>
+          <a>à {{ demande.fin | date }}</a>
+        </div>
+        <div class="buttonsContainer" style="width: 33%">
+          <div>
+            <button class="submit" (click)="accepter(demande.carteId)">
+              Accepter
+            </button>
+          </div>
+          <div>
+            <button class="annulerButton" (click)="refuser(demande.carteId)">
+              Refuser
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

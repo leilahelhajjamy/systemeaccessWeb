@@ -28,6 +28,11 @@ import { ToastModule } from '@syncfusion/ej2-angular-notifications';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FilterPipe } from './filter.pipe';
 import { DayFilterPipe } from './day-filter.pipe';
+import { ReversePipe } from './reverse.pipe';
+import { ToastComponent } from './toast/toast.component';
+import { ToastService } from './services/toast.service';
+import { CongesComponent } from './conges/conges.component';
+import { UsersListComponent } from './users-list/users-list.component';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBgN5HXli1TiiCZney2RV25spifnhLbac0',
@@ -53,6 +58,10 @@ const firebaseConfig = {
     NavbarComponent,
     FilterPipe,
     DayFilterPipe,
+    ReversePipe,
+    ToastComponent,
+    CongesComponent,
+    UsersListComponent,
   ],
   imports: [
     MatSnackBarModule,
@@ -75,7 +84,7 @@ const firebaseConfig = {
     BrowserAnimationsModule, // storage,
     ToastModule,
   ],
-  providers: [],
+  providers: [ToastService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,0 +1,8 @@
+<div class="wrapper">
+  <div *ngFor="let notification of notifications">
+    <div class="is-info" *ngIf="!notification.dismissed">
+      <button class="delete" (click)="dismiss(notification.carteId)"></button>
+      {{ notification.cardId }}
+    </div>
+  </div>
+</div>

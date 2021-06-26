@@ -61,6 +61,7 @@ export class UsersComponent implements OnInit {
   percentage: number;
   DemandesConge: any;
   searchText = '';
+
   constructor(
     public formBuilder: FormBuilder,
     private userService: UserService,

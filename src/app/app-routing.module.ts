@@ -9,6 +9,8 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { ModalYearStatisticsComponent } from './modal-year-statistics/modal-year-statistics.component';
 import { ModalMonthStatisticsComponent } from './modal-month-statistics/modal-month-statistics.component';
+import { UsersListComponent } from './users-list/users-list.component';
+import { CongesComponent } from './conges/conges.component';
 
 const routes: Routes = [
   {
@@ -48,6 +50,16 @@ const routes: Routes = [
   {
     path: 'statisticsMonthModal/:carteId/:moi',
     component: ModalMonthStatisticsComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'usersList',
+    component: UsersListComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'conges',
+    component: CongesComponent,
     canActivate: [AuthGuardService],
   },
 ];
